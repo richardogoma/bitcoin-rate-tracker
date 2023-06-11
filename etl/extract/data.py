@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import requests
-from config import Config
 
 
 def retrieve_rates(uri: str) -> dict:
@@ -11,7 +10,7 @@ def retrieve_rates(uri: str) -> dict:
 
 
 def main():
-    response = retrieve_rates(uri=Config.API_URI)
+    response = retrieve_rates(uri="input API_URI from config.py here")
     print(f"Response of {type(response)} \n{response}")
 
 
