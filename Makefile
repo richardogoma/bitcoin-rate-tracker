@@ -3,7 +3,8 @@ install:
 		pip install -r requirements.txt && \
 
 test:
-	python -m pytest -vv --cov=etl.extract.data tests/test_data_retrieval.py
+	python -m pytest -vv --cov=etl.extract.retriever --cov=etl.transform.parser \
+		tests/test_data_retrieval.py tests/test_data_parsing.py
 
 format:
 	black *.py **/*.py ***/**/*.py 
