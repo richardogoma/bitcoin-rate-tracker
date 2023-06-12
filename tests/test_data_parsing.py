@@ -4,6 +4,10 @@ import pytest
 from datetime import datetime
 from decimal import Decimal
 
+@pytest.fixture
+def test_file_path():
+    return "./data/raw/sample.json"
+
 
 def read_json_file(file_path):
     with open(file_path, "r") as file:
@@ -12,13 +16,8 @@ def read_json_file(file_path):
     return deserialized_data
 
 
-@pytest.fixture
-def file_path():
-    return "./data/raw/sample.json"
-
-
-def test_data_parsing(file_path):
-    test_data = read_json_file(file_path)
+def test_data_parsing(test_file_path):
+    test_data = read_json_file(test_file_path)
     result = parse_dict(test_data)
 
     assert isinstance(result[0], datetime)
