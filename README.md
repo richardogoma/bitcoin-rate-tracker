@@ -1,3 +1,5 @@
+[![Python application](https://github.com/richardogoma/bitcoin-rate-tracker/actions/workflows/python-app.yml/badge.svg)](https://github.com/richardogoma/bitcoin-rate-tracker/actions/workflows/python-app.yml)
+
 # Bitcoin Rate Tracker
 
 The Bitcoin Rate Tracker is a Flask web application or microservice that allows users to track and visualize Bitcoin rates across major currencies. It provides an API for retrieving Bitcoin rates and displaying them in various time ranges.
