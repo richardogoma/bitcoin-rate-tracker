@@ -1,0 +1,54 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.5;
+  padding: 10px;
+}
+
+/* Hero section styles */
+.hero {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  color: #333;
+  margin-top: 50px;
+}
+
+/* Container styles */
+#container {
+  margin-bottom: 20px;
+}
+
+/* Title styles */
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-indent: 20px;
+  }
+
+/* Footer styles */
+footer {
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 600px) {
+  .hero h1 {
+    font-size: 24px;
+  }
+}

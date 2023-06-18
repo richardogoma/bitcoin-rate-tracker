@@ -16,7 +16,7 @@ def retrieve_bitcoin_data(rate_type: str, time_range: tuple) -> list:
         time_range (tuple): The time range in minutes for which to retrieve the data.
 
     Returns:
-        list: A list of dictionaries representing the retrieved data.
+        list: A list of lists representing the retrieved data.
     """
     start_time = time.time()
     try:
@@ -31,17 +31,16 @@ def retrieve_bitcoin_data(rate_type: str, time_range: tuple) -> list:
             # Query to retrieve specific rates from the 'bitcoin_rates' table
             query_string = f"""
             SELECT 
-                timestamp, 
-                {rate_type}
+                strftime('%s', timestamp) * 1000 AS unix_timestamp, 
+                ROUND({rate_type}, 4) AS rate
             FROM bitcoin_rates
             WHERE chart_name = 'Bitcoin' 
                 AND datetime(timestamp) >= (SELECT datetime(max(timestamp), '-' || :minutes || ' minutes') FROM bitcoin_rates);
             """
             cursor.execute(query_string, {"minutes": time_range[0]})
 
-            # Fetch the column names and map them to the retrieved rows
-            columns = [column[0] for column in cursor.description]
-            results = [dict(zip(columns, row)) for row in cursor.fetchall()]
+            # Fetch the retrieved rows
+            results = cursor.fetchall()
 
         end_time = time.time()
         retrieval_time = end_time - start_time
@@ -51,7 +50,6 @@ def retrieve_bitcoin_data(rate_type: str, time_range: tuple) -> list:
 
     except sqlite3.Error as error_msg:
         print("Error: " + str(error_msg))
-
         return None
 
     finally:
