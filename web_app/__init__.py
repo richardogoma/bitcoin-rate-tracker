@@ -2,6 +2,7 @@
 from flask import Flask
 from flask_cors import CORS
 from web_app.api import routes as api_routes
+from web_app.home import routes as home_routes
 
 
 def create_app():
@@ -14,7 +15,7 @@ def create_app():
 
     with app.app_context():
         # Register Blueprints
-        # app.register_blueprint(home_routes.home_bp)
+        app.register_blueprint(home_routes.home_bp)
         app.register_blueprint(api_routes.api_bp)
 
         return app
