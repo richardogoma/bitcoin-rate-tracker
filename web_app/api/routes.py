@@ -40,21 +40,23 @@ def querydata():
         rate_type = f"{params[0].lower()}_rate"
         minutes = int(params[1]) * 60
 
-    except IndexError as error_msg:
+    except (IndexError, TypeError) as error_msg:
         return make_response(
-            jsonify({"Bad request": f"Provide valid query parameters --{error_msg}"}),
+            jsonify({"Bad Request": f"Provide valid query parameters, {error_msg}"}),
             400,
         )
 
     try:
         print(
-            f"Retrieving Bitcoin {rate_type.replace('_', ' ')}s \
-                within {minutes} minutes of the maximum timestamp in the table..."
+            f"Retrieving Bitcoin {rate_type.replace('_', ' ')}s within {minutes} mins from the lastest data in database..."
         )
         data = retrieve_bitcoin_data(rate_type, time_range=(minutes,))
+
+        if data is None:
+            raise IOError("Failed to retrieve data from the database")
 
         headers = {"Content-Type": "application/json"}
         return make_response(jsonify(data), 200, headers)
 
-    except ValueError as error_msg:
-        return make_response(jsonify({"Bad request": str(error_msg)}), 400)
+    except IOError as error_msg:
+        return make_response(jsonify({"Internal Server Error": str(error_msg)}), 500)

@@ -2,7 +2,6 @@
 
 import sqlite3
 import time
-import sys
 from config import Config
 
 config = Config()
@@ -28,9 +27,8 @@ def retrieve_bitcoin_data(rate_type: str, time_range: tuple) -> list:
 
         with connection:
             cursor = connection.cursor()
-            
-            # Query to retrieve the timestamp and specified rate type from the 'bitcoin_rates' table 
-            # for the 'Bitcoin' chart within <:minutes> minutes of the maximum timestamp
+
+            # Query to retrieve specific rates from the 'bitcoin_rates' table
             query_string = f"""
             SELECT 
                 timestamp, 
@@ -53,7 +51,8 @@ def retrieve_bitcoin_data(rate_type: str, time_range: tuple) -> list:
 
     except sqlite3.Error as error_msg:
         print("Error: " + str(error_msg))
-        sys.exit()
+
+        return None
 
     finally:
         connection.close()
