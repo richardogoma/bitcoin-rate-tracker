@@ -33,11 +33,7 @@ def home():
         return render_template(
             "index.html",
             data=data,
-            title="Bitcoin Price Index Chart",
-            notice="""
-            The data was produced from the CoinDesk Bitcoin Price Index (USD). 
-            Non-USD currency data converted using hourly conversion rate from openexchangerates.org.
-            """,
+            title="Bitcoin Price Index Live Chart",
             currency_variable=currency,
         )
 

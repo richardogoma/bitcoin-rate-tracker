@@ -14,5 +14,23 @@
 
 {% include 'highcharts/stockchart.html' %}
 
+<div class="section-header">
+    <h2>Data Notice</h2>
+</div>
+
+<div class="data-notice">
+    <p>The data is produced from the CoinDesk Bitcoin Price Index (USD), updated every minute.
+    Non-USD currency data converted using hourly conversion rate from <a href="https://openexchangerates.org/">openexchangerates.org</a>.</p>
+</div>
+
+<div class="section-header">
+    <h2>Project Description</h2>
+</div>
+
+<div class="project-description">
+    <p>With our user-friendly interface, you can easily track the real-time price of Bitcoin across major currencies. Stay up to date with the latest price trends and monitor fluctuations with interactive charts that provide a clear visual representation.</p>
+</div>
+
 <script src="{{ url_for('home_bp.static', filename='script.js') }}"></script>
+
 {% endblock %}
