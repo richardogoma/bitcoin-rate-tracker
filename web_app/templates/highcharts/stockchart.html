@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/stock.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://code.highcharts.com/modules/gantt.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/parallel-coordinates.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/draggable-points.js"></script>
+    <script src="https://code.highcharts.com/modules/static-scale.js"></script>
+    <script src="https://code.highcharts.com/modules/broken-axis.js"></script>
+    <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+    <script src="https://code.highcharts.com/modules/tilemap.js"></script>
+    <script src="https://code.highcharts.com/modules/timeline.js"></script>
+    <script src="https://code.highcharts.com/modules/treemap.js"></script>
+    <script src="https://code.highcharts.com/modules/treegraph.js"></script>
+    <script src="https://code.highcharts.com/modules/item-series.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script>
+    <script src="https://code.highcharts.com/modules/bullet.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <script src="https://code.highcharts.com/modules/networkgraph.js"></script>
+    <script src="https://code.highcharts.com/modules/pareto.js"></script>
+    <script src="https://code.highcharts.com/modules/pattern-fill.js"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+    <script src="https://code.highcharts.com/modules/sankey.js"></script>
+    <script src="https://code.highcharts.com/modules/arc-diagram.js"></script>
+    <script src="https://code.highcharts.com/modules/dependency-wheel.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+    <script src="https://code.highcharts.com/modules/sonification.js"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+    <script src="https://code.highcharts.com/modules/streamgraph.js"></script>
+    <script src="https://code.highcharts.com/modules/sunburst.js"></script>
+    <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
+    <script src="https://code.highcharts.com/modules/variwide.js"></script>
+    <script src="https://code.highcharts.com/modules/vector.js"></script>
+    <script src="https://code.highcharts.com/modules/venn.js"></script>
+    <script src="https://code.highcharts.com/modules/windbarb.js"></script>
+    <script src="https://code.highcharts.com/modules/wordcloud.js"></script>
+    <script src="https://code.highcharts.com/modules/xrange.js"></script>
+    <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
+    <script src="https://code.highcharts.com/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/modules/debugger.js"></script>
+    <script src="https://code.highcharts.com/modules/dumbbell.js"></script>
+    <script src="https://code.highcharts.com/modules/lollipop.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/organization.js"></script>
+    <script src="https://code.highcharts.com/modules/dotplot.js"></script>
+    <script src="https://code.highcharts.com/modules/marker-clusters.js"></script>
+    <script src="https://code.highcharts.com/modules/hollowcandlestick.js"></script>
+    <script src="https://code.highcharts.com/modules/heikinashi.js"></script>
+    <div id="container"></div>
+</body>
+<script>
+    var data = JSON.parse('{{ data | safe }}');
+    var currencyVariable = '{{ currency_variable }}';
+    var average = data.reduce(function (sum, value) {
+        return sum + value[1];
+    }, 0) / data.length;
+    Highcharts.stockChart('container', {
+        //         chart: {
+        //     borderWidth: 2, // Set the chart border width to 2
+        //     borderColor: '#ccc' // Set the chart border color to gray
+        //   },
+        navigator: {
+            enabled: true,
+            series: {
+                name: "Bitcoin " + currencyVariable + " price"
+            }
+        },
+        rangeSelector: {
+            buttons: [{
+                type: 'hour',
+                count: 1,
+                text: '1h'
+            },
+            {
+                type: 'hour',
+                count: 4,
+                text: '4h'
+            },
+            {
+                type: 'day',
+                count: 1,
+                text: '1d'
+            }, {
+                type: 'day',
+                count: 2,
+                text: '2d'
+            }, {
+                type: 'all',
+                text: 'All'
+            }],
+            selected: 0
+        },
+        title: {
+            text: 'Bitcoin ' + currencyVariable + ' price'
+        },
+        xAxis: {
+            type: 'datetime'
+        },
+        yAxis: {
+            opposite: false,
+            labels: {
+                formatter: function () {
+                    return Highcharts.numberFormat(this.value, 0, '.', ',');
+                }
+            }
+        },
+        tooltip: {
+            formatter: function () {
+                return Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + ' UTC' + '<br>' +
+                    '<span style="font-weight:bold; font-size:14px;">' + Highcharts.numberFormat(this.y, 2, '.', ',') + '</span>';
+            }
+        },
+        plotOptions: {
+            series: {
+                threshold: average,
+                lineWidth: 3,
+                color: 'green',
+                negativeColor: 'red',
+                dataLabels: {
+                    enabled: true,
+                    crop: false,
+                    overflow: 'none',
+                    formatter: function () {
+                        if (this.point.x === this.series.xData[this.series.xData.length - 1]) {
+                            return Highcharts.numberFormat(this.y, 2, '.', ',');
+                        } else {
+                            return null;
+                        }
+                    },
+                    align: 'right',
+                    verticalAlign: 'bottom',
+                    x: 0,
+                    y: 0,
+                    style: {
+                        color: 'black',
+                        fontSize: '12px',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            line: {
+                lineWidth: 1.5
+            }
+        },
+        series: [{
+            name: '',
+            type: 'line',
+            data: data
+        }]
+    });
+
+    // // Refresh the chart every 60 seconds
+    // setInterval(function() {
+    //         // Update the chart with the same data
+    //         chart.series[0].setData(data);
+    //     }, 60000);
+</script>
+
+</html>
