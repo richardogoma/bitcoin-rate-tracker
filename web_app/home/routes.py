@@ -21,7 +21,11 @@ def home():
         return make_response("Malformed request", 400)
 
     try:
-        currency = "USD"
+        # Extract query parameters
+        currency = request.args.get("currency")
+        if not currency:
+            currency = "USD"
+
         url = f"http://127.0.0.1:5051/data?currency={currency}&timerange=48h"
         data = retrieve_rates(uri=url)
 
@@ -29,11 +33,7 @@ def home():
         return render_template(
             "index.html",
             data=data,
-            title="Bitcoin Price Index and Live Chart",
-            notice="""
-            The data was produced from the CoinDesk Bitcoin Price Index (USD). 
-            Non-USD currency data converted using hourly conversion rate from openexchangerates.org.
-            """,
+            title="Bitcoin Price Index Live Chart",
             currency_variable=currency,
         )
 
