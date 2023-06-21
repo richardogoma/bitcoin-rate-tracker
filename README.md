@@ -17,8 +17,7 @@ The project follows the following structure:
 ├── src
 │   └── data
 │       ├── __init__.py
-│       ├── pre_processor.py
-│       └── test_scripts.sql
+│       └── pre_processor.py
 ├── tests
 │   ├── __init__.py
 │   └── test_data_retrieval.py
@@ -26,7 +25,23 @@ The project follows the following structure:
 │   ├── api
 │   │   └── routes.py
 │   ├── home
+│   │   ├── static
+│   │   │   ├── highcharts
+│   │   │   │   ├── stockchart.js
+│   │   │   │   └── wheelchart.js
+│   │   │   └── script.js
+│   │   ├── templates
+│   │   │   ├── highcharts
+│   │   │   │   ├── stockchart.html
+│   │   │   │   └── wheelchart.html
+│   │   │   └── index.html
 │   │   └── routes.py
+│   ├── static
+│   │   ├── favicon.ico
+│   │   ├── logo.svg
+│   │   └── style.css
+│   ├── templates
+│   │   └── layout.html
 │   └── __init__.py
 ├── LICENSE
 ├── Makefile
@@ -34,6 +49,8 @@ The project follows the following structure:
 ├── config.py
 ├── requirements.txt
 └── wsgi.py
+
+14 directories, 26 files
 ```
 
 ## Setup
@@ -41,12 +58,3 @@ To set up the Flask server, run the following command:
 ```bash
 make all
 ```
-
-## Usage
-To access the Bitcoin rates, use the following URL with appropriate parameters:
-```
-http://127.0.0.1:5051/data?currency=<currency_code>&timerange=<time_range>
-```
-Replace `<currency_code>` with the desired currency code (e.g., USD, EUR) and `<time_range>` with the desired time range (e.g., 1h, 24h).
-
-For more detailed information on data retrieval and the web app API, refer to the documentation files located in the `docs` directory.
