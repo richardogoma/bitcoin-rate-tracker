@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function getURLParameter(name) {
     var searchParams = new URLSearchParams(window.location.search);
-    return searchParams.get(name);
+    var value = searchParams.get(name);
+    return value ? value.toUpperCase() : null;
 }
 
 function handleCurrencyChange(event) {

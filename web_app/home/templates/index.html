@@ -19,8 +19,9 @@
 </div>
 
 <div class="data-notice">
-    <p>The data is produced from the CoinDesk Bitcoin Price Index (USD), updated every minute.
-    Non-USD currency data converted using hourly conversion rate from <a href="https://openexchangerates.org/">openexchangerates.org</a>.</p>
+    <p>This data was produced from the CoinDesk Bitcoin Price Index (USD).
+        Non-USD currency data converted using hourly conversion rate from <a
+            href="https://openexchangerates.org/">openexchangerates.org</a>.</p>
 </div>
 
 <div class="section-header">
@@ -28,9 +29,20 @@
 </div>
 
 <div class="project-description">
-    <p>With our user-friendly interface, you can easily track the real-time price of Bitcoin across major currencies. Stay up to date with the latest price trends and monitor fluctuations with interactive charts that provide a clear visual representation.</p>
+    <p>With a user-friendly interface, you can easily track the real-time price of Bitcoin across major currencies,
+        stay up to date with the latest price trends and monitor fluctuations with interactive charts that provide
+        a clear visual representation.
+    </p>
+    <p>Learn more about this project on GitHub:
+        <b><a href="https://github.com/richardogoma/bitcoin-rate-tracker">Web Service</a></b> |
+        <b><a href="https://github.com/richardogoma/bitcoin-rate-etl">Data Streaming Client</a></b>
+    </p>
 </div>
 
+{% include 'highcharts/wheelchart.html' %}
+
+<script src="{{ url_for('home_bp.static', filename='highcharts/stockchart.js') }}"></script>
+<script src="{{ url_for('home_bp.static', filename='highcharts/wheelchart.js') }}"></script>
 <script src="{{ url_for('home_bp.static', filename='script.js') }}"></script>
 
 {% endblock %}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -7,12 +7,15 @@
     <title>{% block title %}{{ title }}{% endblock %}</title>
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <meta name="description" content="Track real-time Bitcoin prices, trends, and fluctuations. 
+    Stay updated with interactive charts for a clear visual representation.">
 </head>
 
 <body>
     <div class="container">
-        <img src="{{ url_for('static', filename='bitcoin.png') }}" alt="Bitcoin Image" class="bitcoin-image">
+        <img src="{{ url_for('static', filename='logo.svg') }}" alt="Application Logo" class="app-logo">
         <main>
             {% block content %}
             {% endblock %}
@@ -20,7 +23,9 @@
     </div>
 
     <div class="copyright">
-        <p>&copy; 2023 Richard Ogoma | <a href="https://www.linkedin.com/in/richard-ogoma/">LinkedIn</a> | <a href="https://github.com/richardogoma">GitHub</a> | <a href="https://twitter.com/richardogoma/">Twitter</a></p>
+        <p>&copy; 2023 Richard Ogoma | <a href="https://www.linkedin.com/in/richard-ogoma/">LinkedIn</a> | <a
+                href="https://github.com/richardogoma">GitHub</a> | <a
+                href="https://twitter.com/richardogoma/">Twitter</a></p>
     </div>
 
 </body>
