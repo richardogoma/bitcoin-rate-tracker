@@ -5,16 +5,13 @@
   box-sizing: border-box;
 }
 
-/* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
 /* Body styles */
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #f5f5f5; /* Light gray background */
+  background-color: #f5f5f5; 
   color: #333;
   line-height: 1.5;
-  padding: 5px; /* Adjust the padding as desired */
+  padding: 5px; 
 }
 
 /* Hero section styles */
@@ -22,19 +19,19 @@ body {
   text-align: center;
   margin-bottom: 20px;
   padding: 20px;
-  margin-top: -10px; /* Adjust the margin-top to bring it closer to the image */
+  margin-top: -10px; 
 }
 
 .hero h1 {
   font-size: 36px;
-  color: #333; /* Set the font color back to #333 */
+  color: #333;
   margin-bottom: 10px;
 }
 
 /* Container styles */
 .container {
   margin-bottom: 20px;
-  max-width: 800px; /* Adjust the max-width as desired */
+  max-width: 800px; 
   margin-left: auto;
   margin-right: auto;
 }
@@ -47,12 +44,12 @@ body {
   text-indent: 20px;
 }
 
-/* Bitcoin image styles */
-.bitcoin-image {
+/* Application logo styles */
+.app-logo {
   display: block;
   margin: 0 auto;
-  max-width: 200px; /* Adjust the max-width as desired */
-  margin-top: -30px; /* Adjust the margin-top to bring it closer to the hero section */
+  max-width: 200px; 
+  margin-top: -30px; 
 }
 
 .section-header {
@@ -76,32 +73,89 @@ body {
   text-align: justify;
 }
 
+.highcharts-description {
+  margin-bottom: 20px;
+  text-align: justify;
+  font-size: 14px;
+}
+
 /* Footer styles */
-footer {
+/* footer {
   text-align: center;
   font-size: 14px;
-  color: #333; /* Darker color for better visibility */
+  color: #333;
   margin-top: 20px;
-  width: 100%; /* Set the footer width to 100% */
-  background-color: #f5f5f5; /* Same background color as body */
-  padding: 10px; /* Adjust the padding as desired */
+  width: 100%; 
+  background-color: #f5f5f5; 
+  padding: 10px; 
   font-weight: bold;
-}
+} */
 
 /* Copyright styles */
 .copyright {
   text-align: center;
-  font-size: 12px; /* Adjust the font size as desired */
-  color: #333; /* Darker color for better visibility */
-  padding: 5px; /* Adjust the padding as desired */
+  font-size: 12px; 
+  color: #333; 
+  padding: 5px; 
 }
 
 /* Copyright links */
 p a {
-  color: #333; /* Set the link color */
+  color: #333; 
   text-decoration: none;
 }
 
 p a:hover {
   text-decoration: underline;
+}
+
+.highcharts-figure,
+.highcharts-data-table table {
+  min-width: 320px;
+  max-width: 800px;
+  margin: 1em auto;
+}
+
+#container {
+  height: 500px;
+}
+
+.highcharts-data-table table {
+  font-family: Verdana, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #ebebeb;
+  margin: 10px auto;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.highcharts-data-table caption {
+  padding: 1em 0;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.highcharts-data-table th {
+  font-weight: 600;
+  padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+  padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+  background: #f1f7ff;
+}
+
+#csv {
+  display: none;
 }
