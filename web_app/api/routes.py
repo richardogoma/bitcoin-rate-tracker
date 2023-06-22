@@ -29,13 +29,12 @@ def querydata():
         (re.compile(r"^([1-9]|[1-3][0-9]|4[0-8])h$"), timerange),
     ]
 
-    params = [
-        pattern.match(variable).group(1)
-        for pattern, variable in patterns
-        if pattern.match(variable)
-    ]
-
     try:
+        params = [
+            pattern.match(variable).group(1)
+            for pattern, variable in patterns
+            if pattern.match(variable)
+        ]
         # Extract validated parameters
         rate_type = f"{params[0].lower()}_rate"
         minutes = int(params[1]) * 60
