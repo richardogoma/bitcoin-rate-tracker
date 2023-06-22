@@ -47,7 +47,7 @@ Highcharts.chart('container-wheel', {
         }
     }],
     credits: {
-        enabled: false
+        enabled: true
     },
     legend: {
         enabled: true,
