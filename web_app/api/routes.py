@@ -49,7 +49,7 @@ def querydata():
         print(
             f"Retrieving Bitcoin {rate_type.replace('_', ' ')}s within {minutes} mins from the lastest data in database..."
         )
-        data = retrieve_bitcoin_data(rate_type, time_range=(minutes,))
+        data = retrieve_bitcoin_data(rate_type, time_range=(minutes,), test=False)
 
         if data is None:
             raise IOError("Failed to retrieve data from the database")
