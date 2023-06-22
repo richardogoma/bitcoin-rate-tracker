@@ -1,3 +1,6 @@
+[MASTER]
+ignore-paths=^data_streaming_client/.*$
+
 [MESSAGES CONTROL]
 ; disable = R,C
 

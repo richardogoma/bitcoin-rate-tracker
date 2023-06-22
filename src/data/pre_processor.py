@@ -7,7 +7,7 @@ from config import Config
 config = Config()
 
 
-def retrieve_bitcoin_data(rate_type: str, time_range: tuple) -> list:
+def retrieve_bitcoin_data(rate_type: str, time_range: tuple, test: bool) -> list:
     """
     Retrieve bitcoin rate data from the database for a specific rate type and time range.
 
@@ -20,7 +20,10 @@ def retrieve_bitcoin_data(rate_type: str, time_range: tuple) -> list:
     """
     start_time = time.time()
     try:
-        sqlite_db_path = config.get_config_value("DATABASE_URI")
+        if not test:
+            sqlite_db_path = config.get_config_value("DATABASE_URI")
+        else:
+            sqlite_db_path = config.get_config_value("TEST_DATABASE_URI")
 
         # Establish a connection to the SQLite database
         connection = sqlite3.connect(database=sqlite_db_path)
