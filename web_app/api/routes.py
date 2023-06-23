@@ -10,15 +10,21 @@ api_bp = Blueprint(
 )
 
 
-@api_bp.route("/data", methods=["GET"])
+@api_bp.route("/data", methods=["GET", "HEAD"])
 def querydata():
     """
     Route request based on query parameters to the endpoint.
     Expected query parameters: currency (3-letter code), timerange (in hours).
     """
-    if request.method != "GET":
+    if request.method not in ["GET", "HEAD"]:
         return make_response("Malformed request", 400)
 
+    # Handle HTTP HEAD requests
+    if request.method == "HEAD":
+        data = {}
+        headers = {"Content-Type": "application/json"}
+        return make_response(jsonify(data), 200, headers)
+    
     # Extract query parameters
     currency = request.args.get("currency")
     timerange = request.args.get("timerange")
