@@ -19,12 +19,6 @@ def querydata():
     if request.method not in ["GET", "HEAD"]:
         return make_response("Malformed request", 400)
 
-    # Handle HTTP HEAD requests
-    if request.method == "HEAD":
-        data = {}
-        headers = {"Content-Type": "application/json"}
-        return make_response(jsonify(data), 200, headers)
-    
     # Extract query parameters
     currency = request.args.get("currency")
     timerange = request.args.get("timerange")
