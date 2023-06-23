@@ -13,11 +13,11 @@ home_bp = Blueprint(
 )
 
 
-@home_bp.route("/", methods=["GET"])
+@home_bp.route("/", methods=["GET", "HEAD"])
 def home():
     """Homepage."""
 
-    if request.method != "GET":
+    if request.method not in ["GET", "HEAD"]:
         return make_response("Malformed request", 400)
 
     # Extract query parameters
