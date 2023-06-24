@@ -27,7 +27,7 @@ def run_etl():
 
         # Step out of the etl directory
         os.chdir(project_home)
-        
+
         if etl_exitcode == 0:
             print(r"Data Streaming Client running ...")
 
